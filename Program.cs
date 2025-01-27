@@ -28,32 +28,52 @@ Console.WriteLine($"{player1Name}, you go first.");
 
 Tools.PrintDisplay(boardArray);
 
-do
+while (!IsGameOver(boardArray))
 {
-    Console.Write("Please enter a single positive whole number: ");
-    string input = Console.ReadLine();
-
-    // Try to parse the input and check if it's a positive number
-    if (int.TryParse(input, out playerMove) && playerMove > 0 && playerMove <= 9)
+    if (player1Turn)
     {
-        // Check if the selected cell is already taken
-        if (boardArray[playerMove - 1] == 'X' || boardArray[playerMove - 1] == 'O')
-        {
-            Console.WriteLine("That cell is already taken. Please select another one.");
-            continue;
-        }
-        break; // Exit the loop if valid input is provided
+        Console.WriteLine($"{player1Name}, it is your turn!");
     }
     else
     {
-        Console.WriteLine("Invalid input. Make sure to enter a whole number between 1 and 9.");
+        Console.WriteLine($"{player2Name}, it is your turn!");
     }
-} while (true);
+    do
+    {
+        Console.Write("Please enter a single positive whole number: ");
+        string input = Console.ReadLine();
 
-// Update the board with the player's move
-boardArray[playerMove - 1] = player1Turn ? 'X' : 'O';
+        // Try to parse the input and check if it's a positive number
+        if (int.TryParse(input, out playerMove) && playerMove > 0 && playerMove <= 9)
+        {
+            // Check if the selected cell is already taken
+            if (boardArray[playerMove - 1] == 'X' || boardArray[playerMove - 1] == 'O')
+            {
+                Console.WriteLine("That cell is already taken. Please select another one.");
+                continue;
+            }
+            break; // Exit the loop if valid input is provided
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Make sure to enter a whole number between 1 and 9.");
+        }
+    } while (true);
+    
+    // Update the board with the player's move
+    boardArray[playerMove - 1] = player1Turn ? 'X' : 'O';
 
-Tools.PrintDisplay(boardArray);
+    Tools.PrintDisplay(boardArray);
 
-player1Turn = !player1Turn;
+    player1Turn = !player1Turn;
+}
+
+Console.WriteLine("Thank you for playing!");
+
+
+
+
+
+
+
 
