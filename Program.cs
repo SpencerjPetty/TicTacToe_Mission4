@@ -1,5 +1,6 @@
 using TicTacToe_Mission4;
 
+// Initialize variables for tictactoe board and player moves 
 char[] boardArray = new char[9];
 
 int playerMove;
@@ -9,7 +10,7 @@ for (int i = 0; i < boardArray.Length; i++)
     boardArray[i] = (char)('1' + i);  // '1' is the ASCII character for the digit 1, and adding i shifts it to '2', '3', ..., '9'
 }
 
-Console.WriteLine(boardArray);
+// print board, assign player order and name and start the game!
 
 bool player1Turn = true;
 
@@ -30,6 +31,8 @@ Console.WriteLine($"{player1Name}, you go first.");
 
 Tools.PrintDisplay(boardArray);
 
+
+// Enter loop to play the game, pass player names and board to track the winner
 while (!Tools.IsGameOver(boardArray, player1Name, player2Name))
 {
     if (player1Turn)
