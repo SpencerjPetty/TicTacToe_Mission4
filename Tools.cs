@@ -12,7 +12,8 @@ namespace TicTacToe_Mission4
         public static bool IsGameOver(char[] boardArray, string player1Name, string player2Name)
         {
             bool result = false;
-
+            
+            // Set winning combinations
             string[] winningCombinations = new string[8]
             {
                 "123", // Top row
@@ -25,26 +26,28 @@ namespace TicTacToe_Mission4
                 "357"  // Top-right to bottom-left diagonal
             };
             
+            // Loop through the winning combinations to check if there are any wins
             foreach (string combination in winningCombinations)
             {
                 string winningRowContent = "";
                 
+                // Loop through each character of a combination and add up all existing values
                 for (int i = 0; i < combination.Length; i++)
                 {
                     int index = combination[i] - '1';
                     winningRowContent += boardArray[index];
                 }
-
+                
                 if (winningRowContent.ToLower() == "xxx")
                 {
                     result = true;
-                    Console.WriteLine($"{player1Name} Wins!");
+                    Console.WriteLine($"{player1Name} Wins! (X)");
                 }
                 
                 if (winningRowContent.ToLower() == "ooo")
                 {
                     result = true;
-                    Console.WriteLine($"{player2Name} Wins!");
+                    Console.WriteLine($"{player2Name} Wins! (O)");
                 }
             }
     
@@ -53,19 +56,20 @@ namespace TicTacToe_Mission4
             {
                 bool boardFull = true;
                 
-                // loop through the array
+                // loop through the board
                 for (int i = 0; i < boardArray.Length; i++)
                 {
                     char matchingIndex = (i + 1).ToString()[0];
                     
-                    // check if each value is the number or not
+                    // If there is a number we know the board is not full
                     if (boardArray[i] == matchingIndex)
                     {
                         boardFull = false;
                         break;
                     }
                 }
-
+                
+                // If the board is still full end the game
                 if (boardFull)
                 {
                     result = true;
