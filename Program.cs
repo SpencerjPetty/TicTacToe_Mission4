@@ -16,11 +16,31 @@ bool player1Turn = true;
 
 Console.WriteLine("Let's play Tic Tac Toe!");
 
-Console.WriteLine("Player 1, enter your name:");
-string player1Name = Console.ReadLine();
 
-Console.WriteLine("Player 2, enter your name:");
-string player2Name = Console.ReadLine();
+// Get player names and ensure no null values
+string player1Name = "";
+while (string.IsNullOrEmpty(player1Name))
+{
+    Console.WriteLine("Player 1, enter your name:");
+    player1Name = Console.ReadLine();
+    if (string.IsNullOrEmpty(player1Name))
+    {
+        Console.WriteLine("Name cannot be empty. Please enter a valid name.");
+    }
+}
+
+string player2Name = "";
+while (string.IsNullOrEmpty(player2Name))
+{
+    Console.WriteLine("Player 2, enter your name:");
+    player2Name = Console.ReadLine();
+    if (string.IsNullOrEmpty(player2Name))
+    {
+        Console.WriteLine("Name cannot be empty. Please enter a valid name.");
+    }
+}
+
+Console.WriteLine($"Welcome {player1Name} and {player2Name}!");
 
 Console.WriteLine($"{player1Name}, you are X. {player2Name}, you are O.");
 
