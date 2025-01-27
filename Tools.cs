@@ -9,7 +9,7 @@ namespace TicTacToe_Mission4
     internal class Tools
     {
 
-        public static bool IsGameOver(char[] boardArray)
+        public static bool IsGameOver(char[] boardArray, string player1Name, string player2Name)
         {
             bool result = false;
 
@@ -38,13 +38,13 @@ namespace TicTacToe_Mission4
                 if (winningRowContent.ToLower() == "xxx")
                 {
                     result = true;
-                    Console.WriteLine("Player 1 (X) Wins!");
+                    Console.WriteLine($"{player1Name} Wins!");
                 }
                 
                 if (winningRowContent.ToLower() == "ooo")
                 {
                     result = true;
-                    Console.WriteLine("Player 2 (O) Wins!");
+                    Console.WriteLine($"{player2Name} Wins!");
                 }
             }
     
@@ -78,6 +78,7 @@ namespace TicTacToe_Mission4
         
         public static void PrintDisplay(char[] boardArray)
         {
+            Console.Clear();
             // Loop through each cell in the board array
             for (int i = 0; i < boardArray.Length; i++)
             {
