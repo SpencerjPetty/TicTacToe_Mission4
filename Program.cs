@@ -6,8 +6,10 @@ int playerMove;
 
 for (int i = 0; i < boardArray.Length; i++)
 {
-    boardArray[i] = (char)(i + 1);
+    boardArray[i] = (char)('1' + i);  // '1' is the ASCII character for the digit 1, and adding i shifts it to '2', '3', ..., '9'
 }
+
+Console.WriteLine(boardArray);
 
 bool player1Turn = true;
 
@@ -28,7 +30,7 @@ Console.WriteLine($"{player1Name}, you go first.");
 
 Tools.PrintDisplay(boardArray);
 
-while (!IsGameOver(boardArray))
+while (!Tools.IsGameOver(boardArray, player1Name, player2Name))
 {
     if (player1Turn)
     {
