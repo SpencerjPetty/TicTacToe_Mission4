@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe_Mission4
 {
-    internal class Board
+    internal class Tools
     {
 
     }
